@@ -26,7 +26,7 @@ object Server {
 
     // The encoder can be integrated with AkkaHttp just with a couple of lines of code.
     // The JsonEncoder of the response type given must be provided.
-    // Note that Scala 3 given is used but properly used in place of Scala 2 implicit.
+    // Note that Scala 3 given is defined but properly used in place of Scala 2 implicit.
     given reponseMarshaler[A](using encoder: JsonEncoder[A]) as ToEntityMarshaller[A] = {
       Marshaller.withFixedContentType(`application/json`) { a =>
         HttpEntity(`application/json`, encoder.asJson(a))

@@ -8,7 +8,7 @@ given JsonEncoder[BodyName] = JsonEncoder.toStringEncoder(_.asString)
 
 given JsonEncoder[Radius] = JsonEncoder.toDoubleEncoder(_.asDouble)
 
-// JsonInstances are derived separately to the corresponding class definition (I just prefer this way),
+// JsonEncoder instances are derived separately to the corresponding class definition (I just prefer this way),
 // but it can be combined with class definition with derives keyword.
 given JsonEncoder[EnvironmentResponse] = JsonEncoder.derived
 

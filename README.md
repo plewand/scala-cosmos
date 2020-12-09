@@ -1,9 +1,13 @@
 ## Scala Cosmos
 
-An example project to show multiple Scala 3 features in a simple web application.
+An example project to show multiple Scala 3 (Dotty) features in a simple web application.
 
 This project was created to try Scala 3 in a working program, find possible use cases and
 meet problems that may appear while creating a "real" web application.
+
+If you have any comments or ideas related to the project please add them to 
+GitHub [Discussions](https://github.com/plewand/scala-cosmos/discussions) of the project - 
+Dotty is a new thing so every input can help in learning it. 
 
 ### Structure
 
