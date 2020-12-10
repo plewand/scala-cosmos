@@ -5,7 +5,7 @@ val AkkaHttpVersion = "10.2.1"
 lazy val root = project
   .in(file("."))
   .settings(
-    name := "scala-universe",
+    name := "scala-cosmos",
     version := "0.1.0",
 
     scalaVersion := dottyVersion,
