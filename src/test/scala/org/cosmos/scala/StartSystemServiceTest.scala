@@ -11,7 +11,7 @@ import ServiceError._
 // The tests may be synchrounous and their logic is simpler therefore.
 class StartSystemServiceTest extends AnyFlatSpec with should.Matchers {
 
-  import LittleMonadInstances.given_LittleMonad_Id
+  import LittleMonadInstances.{given LittleMonad[Id]}
 
   // To have extension methods
   import BodyName._

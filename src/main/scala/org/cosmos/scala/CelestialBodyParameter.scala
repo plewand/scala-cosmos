@@ -12,7 +12,7 @@ enum HabitabilityConditions {
 }
 
 // Enums can have parameters. In this case they are constant as defined in each enum value.
-enum SurfaceMaterial(albedo: Double) {
+enum SurfaceMaterial(val albedo: Double) {
 
   case Rock extends SurfaceMaterial(0.4)
 

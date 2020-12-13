@@ -21,8 +21,8 @@ The project uses the following Scala 3 features:
 
 1. **Givens** in multiple cases.
 2. New **enums**, parametrized and not, also used to define ADT.
-3. **Extension functions**.
-4. **Opaque types** to keep domain values.
+3. **Extension methods**.
+4. **Opaque type aliases** to keep domain values.
 5. **Automatic type class derivation** for response JSON encoding.
 6. **Implicit conversions** in a new Scala 3 way.
 7. AkkaHttp as a **Scala 2 integration** example.
