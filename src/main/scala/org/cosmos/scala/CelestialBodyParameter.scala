@@ -46,13 +46,11 @@ opaque type Radius = Double
 object Radius {
   def apply(number: Double): Radius = number
 
-  extension (radius: Radius) {
+  extension (radius: Radius)
     def asDouble: Double = radius
-  }
 
-  extension (number: Double) {
+  extension (number: Double)
     def asRadius: Radius = number
-  }
 }
 
 opaque type BodyName = String
@@ -60,26 +58,23 @@ opaque type BodyName = String
 object BodyName {
   def apply(str: String): BodyName = str
 
-  extension (bodyName: BodyName) {
+  extension (bodyName: BodyName)
     def asString: String = bodyName
-  }
 
-  extension (str: String) {
+  extension (str: String)
     def asBodyName: BodyName = str
-  }
 }
 
 // It is safe to use implicit conversions in the domain, so this mechanism is used.
 // In Scala 3 all implicit conversions must be derived from Conversion class.
 object Conversions {
 
-  given radiusConversion as Conversion[Radius, Double] {
+  given radiusConversion : Conversion[Radius, Double]
     def apply(radius: Radius): Double = radius.asDouble
-  }
 
-  given bodyNameConversion as Conversion[BodyName, String] {
+
+  given bodyNameConversion: Conversion[BodyName, String]
     def apply(bodyName: BodyName): String = bodyName.asString
-  }
 
 }
 

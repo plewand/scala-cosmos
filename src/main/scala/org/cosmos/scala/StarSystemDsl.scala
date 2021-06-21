@@ -32,13 +32,13 @@ object StarSystemDsl {
 
   def starSystem(starName: BodyName)(definePlanets: StarSystemBuilder ?=> Unit): StarSystem = {
     // Create the alias. When it is accessed the first time, StarSystemBuilder object is created in a thread safe way.
-    given starSystem as StarSystemBuilder(starName)
+    given starSystem : StarSystemBuilder(starName)
     definePlanets
     starSystem.build
   }
 
   def planet(planetName: BodyName, radius: Radius, habitability: HabitabilityConditions, surface: SurfaceMaterial, atmosphere: AtmosphereGas)(defineMoons: PlanetBuilder ?=> Unit)(using StarSystemBuilder) = {
-    given planet as PlanetBuilder(planetName, radius, habitability, surface, atmosphere)
+    given planet with PlanetBuilder(planetName, radius, habitability, surface, atmosphere)
     summon[StarSystemBuilder].planets += planet
     defineMoons
   }
@@ -49,7 +49,7 @@ object StarSystemDsl {
   }
 
   def moon(moonName: BodyName, radius: Radius, habitability: HabitabilityConditions, surface: SurfaceMaterial, atmosphere: AtmosphereGas)(using PlanetBuilder) = {
-    given moon as MoonBuilder(moonName, radius, habitability, surface, atmosphere)
+    given moon : MoonBuilder(moonName, radius, habitability, surface, atmosphere)
     summon[PlanetBuilder].moons += moon
   }
 
