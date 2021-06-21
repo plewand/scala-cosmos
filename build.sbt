@@ -1,5 +1,5 @@
-val dottyVersion = "3.0.0-M2"
-val AkkaVersion = "2.6.8"
+val dottyVersion = "3.0.0"
+val AkkaVersion = "2.6.14"
 val AkkaHttpVersion = "10.2.1"
 
 lazy val root = project
@@ -17,11 +17,11 @@ lazy val root = project
 
     libraryDependencies ++= Seq(
       // Using withDottyCompat allows Scala 2 libraries to work with Scala 3.
-      ("com.typesafe.akka" %% "akka-stream" % AkkaVersion).withDottyCompat(scalaVersion.value),
-      ("com.typesafe.akka" %% "akka-http" % AkkaHttpVersion).withDottyCompat(scalaVersion.value),
+      ("com.typesafe.akka" %% "akka-stream" % AkkaVersion).cross(CrossVersion.for3Use2_13),
+      ("com.typesafe.akka" %% "akka-http" % AkkaHttpVersion).cross(CrossVersion.for3Use2_13),
       // ScalaTest has already 3.0 implementation
-      "org.scalactic" %% "scalactic" % "3.2.3",
-      "org.scalatest" %% "scalatest" % "3.2.3" % "test",
-      "org.scalatest" %% "scalatest-flatspec" % "3.2.3" % "test"
+      "org.scalactic" %% "scalactic" % "3.2.9",
+      "org.scalatest" %% "scalatest" % "3.2.9" % "test",
+      "org.scalatest" %% "scalatest-flatspec" % "3.2.9" % "test"
     )
   )

@@ -16,17 +16,14 @@ trait JsonEncoder[T] {
 // Instances for builtin types used in the project.
 object JsonEncoderInstances {
 
-  given JsonEncoder[String] {
+  given jsonEncoderString: JsonEncoder[String]
     def asJson(encoded: String): String = "\"" + encoded + "\""
-  }
 
-  given JsonEncoder[Double] {
+  given jsonEncoderDouble: JsonEncoder[Double]
     def asJson(encoded: Double): String = s"$encoded"
-  }
 
-  given[T] (using elemEncoder: JsonEncoder[T]) as JsonEncoder[Seq[T]] {
+  given jsonEncoder[T] (using elemEncoder: JsonEncoder[T]): JsonEncoder[Seq[T]]
     def asJson(v: Seq[T]): String = "[" + v.map(elemEncoder.asJson).mkString(", ") + "]"
-  }
 
 }
 
@@ -37,7 +34,7 @@ object JsonEncoder {
   import JsonEncoderDerivation._
 
   // To use automatic type class derivation, the companion object must export 'derived'.
-  inline given derived[T](using m: Mirror.Of[T]) as JsonEncoder[T] = {
+  inline given derived[T](using m: Mirror.Of[T]): JsonEncoder[T] = {
     val encoders = summonTypeClassInstances[m.MirroredElemTypes]
     inline m match {
       case s: Mirror.SumOf[T] => jsonSum(s, encoders)
