@@ -28,12 +28,12 @@ object LittleMonadExtensions {
 // Id during the tests.
 object LittleMonadInstances {
 
-  given littleMonadFuture(using ExecutionContext): LittleMonad[Future]
+  given littleMonadFuture(using ExecutionContext): LittleMonad[Future] with
     def pure[A](value: A): Future[A] = Future.successful(value)
     def flatMap[A, B](m: Future[A])(f: A => Future[B]): Future[B] = m.flatMap(f)
 
 
-  given littleMonadId: LittleMonad[Id]
+  given littleMonadId: LittleMonad[Id] with
     def pure[A](value: A): Id[A] = value
     def flatMap[A, B](m: Id[A])(f: A => Id[B]): Id[B] = f(m)
 

@@ -69,11 +69,11 @@ object BodyName {
 // In Scala 3 all implicit conversions must be derived from Conversion class.
 object Conversions {
 
-  given radiusConversion : Conversion[Radius, Double]
+  given radiusConversion : Conversion[Radius, Double] with
     def apply(radius: Radius): Double = radius.asDouble
 
 
-  given bodyNameConversion: Conversion[BodyName, String]
+  given bodyNameConversion: Conversion[BodyName, String] with
     def apply(bodyName: BodyName): String = bodyName.asString
 
 }

@@ -16,13 +16,13 @@ trait JsonEncoder[T] {
 // Instances for builtin types used in the project.
 object JsonEncoderInstances {
 
-  given jsonEncoderString: JsonEncoder[String]
+  given jsonEncoderString: JsonEncoder[String] with
     def asJson(encoded: String): String = "\"" + encoded + "\""
 
-  given jsonEncoderDouble: JsonEncoder[Double]
+  given jsonEncoderDouble: JsonEncoder[Double] with
     def asJson(encoded: Double): String = s"$encoded"
 
-  given jsonEncoder[T] (using elemEncoder: JsonEncoder[T]): JsonEncoder[Seq[T]]
+  given jsonEncoder[T] (using elemEncoder: JsonEncoder[T]): JsonEncoder[Seq[T]] with
     def asJson(v: Seq[T]): String = "[" + v.map(elemEncoder.asJson).mkString(", ") + "]"
 
 }
