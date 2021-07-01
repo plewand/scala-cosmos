@@ -12,11 +12,12 @@ lazy val root = project
 
     scalacOptions ++= Seq(
       "-Xfatal-warnings",
-      "-deprecation"
+      "-deprecation",
+      "-Yexplicit-nulls"
     ),
 
     libraryDependencies ++= Seq(
-      // Using withDottyCompat allows Scala 2 libraries to work with Scala 3.
+      // Using Scala 2 libraries to work with Scala 3.
       ("com.typesafe.akka" %% "akka-stream" % AkkaVersion).cross(CrossVersion.for3Use2_13),
       ("com.typesafe.akka" %% "akka-http" % AkkaHttpVersion).cross(CrossVersion.for3Use2_13),
       // ScalaTest has already 3.0 implementation

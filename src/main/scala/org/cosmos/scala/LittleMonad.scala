@@ -28,11 +28,13 @@ object LittleMonadExtensions {
 // Id during the tests.
 object LittleMonadInstances {
 
-  given littleMonadFuture(using ExecutionContext): LittleMonad[Future] with
+  // Anonynous given. It is named by the compiler as given_LittleMonad_Future and this name can be imported explicitly.
+  given (using ExecutionContext): LittleMonad[Future] with
     def pure[A](value: A): Future[A] = Future.successful(value)
     def flatMap[A, B](m: Future[A])(f: A => Future[B]): Future[B] = m.flatMap(f)
 
 
+  // A given with a name. This name name can be imported explicitly.
   given littleMonadId: LittleMonad[Id] with
     def pure[A](value: A): Id[A] = value
     def flatMap[A, B](m: Id[A])(f: A => Id[B]): Id[B] = f(m)

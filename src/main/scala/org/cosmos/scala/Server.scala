@@ -8,7 +8,7 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, _}
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, Unmarshaller}
 import org.cosmos.scala.BodyName._
-import org.cosmos.scala.LittleMonadInstances.given
+import org.cosmos.scala.LittleMonadInstances.given_LittleMonad_Future
 import ServiceError._
 
 import scala.concurrent
